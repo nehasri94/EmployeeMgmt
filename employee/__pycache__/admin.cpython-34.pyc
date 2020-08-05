@@ -1,0 +1,27 @@
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import EmployeeInfo
+from .serializers import EmployeeInfoSerializer
+
+
+# Lists all users or create a new one
+# eminfo/
+#class EmployeeInfoList(APIView):
+
+   # def get(self, request):
+        # eminfo = EmployeeInfo.objects.all()
+        # serializer = EmployeeInfoSerializer(eminfo, many=True)
+        # return Response(serializer.data)
+
+    # def post(self):
+       # pass
+from rest_framework.viewsets import ModelViewSet
+from .serializers import EmployeeInfoSerializer
+from .models import EmployeeInfo
+
+
+class EmployeeInfoViewSet(ModelViewSet):
+    serializer_class = EmployeeInfoSerializer
+    queryset = EmployeeInfo.objects.all()
